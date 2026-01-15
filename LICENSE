@@ -1,0 +1,37 @@
+MIT License
+
+Copyright (c) 2026 Chandra TERA
+
+# 📚 SIAKAD Presensi
+
+SIAKAD Presensi adalah aplikasi **Sistem Informasi Akademik berbasis web** yang digunakan untuk mengelola **presensi siswa dan guru** secara digital. Sistem ini dirancang untuk membantu sekolah dalam pencatatan kehadiran, pengelolaan data akademik, serta penyajian laporan presensi secara efisien dan terstruktur.
+
+## 🎯 Tujuan
+- Mengurangi penggunaan presensi manual
+- Meningkatkan akurasi data kehadiran
+- Memudahkan monitoring presensi siswa dan guru
+- Mendukung digitalisasi sistem akademik sekolah
+
+## 👥 Role Pengguna
+- **Admin / Operator**  
+  Mengelola data pengguna, kelas, mata pelajaran, dan sistem
+- **Guru**  
+  Melakukan presensi siswa dan melihat laporan kehadiran
+- **Siswa**  
+  Melihat riwayat kehadiran pribadi
+
+## ✨ Fitur Utama
+- Login dan autentikasi berbasis role
+- Manajemen data siswa, guru, dan kelas
+- Presensi siswa per kelas dan mata pelajaran
+- Riwayat dan laporan presensi
+- Dashboard informatif
+- Desain responsif
+
+## 🛠️ Teknologi yang Digunakan
+- **Framework** : Laravel
+- **Bahasa** : PHP
+- **Database** : MySQL
+- **Frontend** : HTML, CSS, JavaScript
+- **UI Framework** : Bootstrap / Tailwind CSS
+
