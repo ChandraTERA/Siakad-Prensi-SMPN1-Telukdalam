@@ -104,4 +104,8 @@ class TugasController extends Controller
 
         return redirect()->route('siswa.tugas.show', $tugas)->with('success', 'Tugas berhasil dikumpulkan!');
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 8eb815f2814f50649d66495f0cefddd3e17a1f14
