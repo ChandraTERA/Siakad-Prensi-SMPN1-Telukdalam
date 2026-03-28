@@ -1,0 +1,186 @@
+{
+    // =================================================================
+    //  PENGATURAN UMUM & TAMPILAN EDITOR
+    // =================================================================
+    "workbench.colorTheme": "One Hunter Flexoki Dark",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.startupEditor": "none",
+    "workbench.sideBar.location": "right",
+    "workbench.editor.empty.hint": "hidden",
+
+    "editor.fontSize": 18,
+    "editor.fontFamily": "JetBrains Mono",
+    "editor.fontLigatures": true,
+    "editor.linkedEditing": true,
+    "editor.mouseWheelZoom": true,
+    "editor.wordWrap": "on", // 'on' lebih fleksibel daripada 'bounded'
+    "editor.wrappingIndent": "same",
+
+    "files.autoSave": "onWindowChange", // Lebih aman dari 'onWindowChange', mencegah save yang terlalu sering
+    "files.autoSaveDelay": 1000,
+
+    // =================================================================
+    //  FORMATTER & AKSI SAAT MENYIMPAN (AUTO-FIX & ORGANIZE)
+    // =================================================================
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode", // Prettier sebagai default untuk web
+    "prettier.singleQuote": true,
+    "prettier.embeddedLanguageFormatting": "auto",
+
+    // ✅ Bagian terpenting untuk automasi: auto-fix dan rapikan imports saat menyimpan
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit", // Menjalankan auto-fix dari ESLint, Stylelint, Ruff, dll.
+        "source.organizeImports": "explicit" // Merapikan urutan import (sangat berguna untuk Python & JS/TS)
+    },
+
+    // =================================================================
+    //  PENGATURAN SPESIFIK PER BAHASA
+    // =================================================================
+
+    // 🐍 Python: Gunakan 'black' untuk format & biarkan 'ruff' (via fixAll) untuk linting
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true
+    },
+
+    // 🐘 PHP: Gunakan 'PHP CS Fixer' untuk formatting yang sesuai standar PSR
+    "[php]": {
+        "editor.defaultFormatter": "junstyle.php-cs-fixer",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.php-cs-fixer": "explicit"
+        }
+    },
+    // --- PHP CS Fixer ---
+    "php-cs-fixer.executablePath": "${workspaceFolder}/php-cs-fixer.phar",
+    "php-cs-fixer.onsave": true,
+    "php-cs-fixer.rules": "@PSR12",
+    "php-cs-fixer.config": ".php-cs-fixer.php",
+    "php-cs-fixer.allowRisky": false,
+    "php-cs-fixer.autoFixByBracket": true,
+    "php-cs-fixer.autoFixBySelf": true,
+
+    // 💧 Laravel Blade
+    "[blade]": {
+        "editor.defaultFormatter": "shufo.vscode-blade-formatter",
+        "editor.formatOnSave": true
+    },
+
+    // 📝 Oracle SQL
+    "[oraclesql]": {
+        "editor.suggest.showSnippets": true,
+        "editor.quickSuggestions": {
+            "comments": "on",
+            "strings": "on",
+            "other": "on"
+        }
+    },
+
+    // =================================================================
+    //  FILE EXCLUSION & METADATA MANAGEMENT (macOS SSD External)
+    // =================================================================
+    "files.exclude": {
+        "**/.page.tsx": true,
+        "**/.DS_Store": true,
+        "**/._*": true,
+        "**/.Spotlight-V100": true,
+        "**/.Trashes": true,
+        "**/ehthumbs.db": true,
+        "**/Thumbs.db": true,
+        "**/*.tmp": true,
+        "**/*.temp": true,
+        "**/.*~": true,
+        "**/.fleet": true,
+        "**/.idea": true,
+        "**/.nova": true,
+        "**/.vscode": true,
+        "**/.zed": true
+    },
+
+    "files.watcherExclude": {
+        "**/.DS_Store": true,
+        "**/._*": true,
+        "**/.Spotlight-V100": true,
+        "**/.Trashes": true,
+        "**/node_modules/**": true,
+        "**/vendor/**": true,
+        "**/storage/**": true,
+        "**/bootstrap/cache/**": true
+    },
+
+    "search.exclude": {
+        "**/.DS_Store": true,
+        "**/._*": true,
+        "**/.Spotlight-V100": true,
+        "**/.Trashes": true,
+        "**/node_modules": true,
+        "**/vendor": true,
+        "**/storage": true,
+        "**/bootstrap/cache": true,
+        "**/public/build": true,
+        "**/public/hot": true
+    },
+
+    // =================================================================
+    //  PENGATURAN EKSTENSI & LAINNYA
+    // =================================================================
+    "liveServer.settings.donotShowInfoMsg": true,
+    "css.lint.unknownAtRules": "ignore",
+
+    // --- Terminal ---
+    "terminal.integrated.fontFamily": "monospace",
+    "terminal.integrated.gpuAcceleration": "on",
+
+    // --- Language Intelligence ---
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "python.createEnvironment.trigger": "off",
+    "svelte.enable-ts-plugin": true,
+
+    // --- Extension: Codeium ---
+    "codeium.enableConfig": {
+        "*": true,
+        "html": false,
+        "oracle-sql": true,
+        "php": false
+    },
+    "codeium.disableSupercomplete": true,
+
+    // --- Extension: GitHub Copilot ---
+    "github.copilot.nextEditSuggestions.enabled": true,
+
+    // --- Extension: Console Ninja ---
+    "console-ninja.featureSet": "Community",
+
+    // --- Extension: Oracle Developer Tools ---
+    "oracledevtools.connectionConfiguration.configFilesFolder": "/Users/rioanggoro/Oracle/network/admin",
+    "oracledevtools.connectionConfiguration.walletFileFolder": "/Users/rioanggoro/Oracle/network/admin",
+    "oracledevtools.bookmarkFileFolder": "/Users/rioanggoro/Oracle/oracle.oracledevtools",
+    "oracledevtools.download.otherFolder": "/Users/rioanggoro/downloads",
+
+    // --- Extension: SQL Developer ---
+    "sqldeveloper.sqlHistory.historyLimit": 500,
+    "sqldeveloper.telemetry.enabled": true,
+    "sqldeveloper.database.nls.dateFormat": "DD-MON-YYYY HH24:MI:SS",
+    "sqldeveloper.database.nls.timestampFormat": "DD-MON-YYYY HH24:MI:SSXFF AM",
+    "sqldeveloper.database.nls.timestampTZ Format": "DD-MON-YYYY HH24:MI:SSXFF AM TZR",
+
+    // --- Sisa Pengaturan ---
+    "diffEditor.wordWrap": "on",
+    "diffEditor.codeLens": true,
+    "database-client.autoSync": true,
+    "remote.portsAttributes": {
+        "5500": {
+            "protocol": "https"
+        }
+    },
+    "editor.unicodeHighlight.allowedLocales": {
+        "cs": true
+    },
+    "terminal.integrated.env.osx": {},
+    "terminal.integrated.env.windows": {},
+    "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
+    "php-cs-fixer.lastDownload": 1758170081008
+}
+
