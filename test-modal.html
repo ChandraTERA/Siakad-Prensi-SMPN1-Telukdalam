@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Test Modal</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="bg-gray-100 p-8">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-2xl font-bold mb-6">Test Delete Modal</h1>
+
+            <button
+                onclick="openDeleteModal('/test/delete/1', 'Test Task 1')"
+                class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
+            >
+                Delete Task 1
+            </button>
+
+            <button
+                onclick="openDeleteModal('/test/delete/2', 'Test Task 2')"
+                class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 ml-4"
+            >
+                Delete Task 2
+            </button>
+        </div>
+
+        <!-- Delete Confirmation Modal -->
+        <div
+            id="deleteModal"
+            class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 hidden"
+        >
+            <div
+                class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white"
+            >
+                <div class="mt-3 text-center">
+                    <!-- Warning Icon -->
+                    <div
+                        class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100 mb-4"
+                    >
+                        <svg
+                            class="h-6 w-6 text-red-600"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                            />
+                        </svg>
+                    </div>
+
+                    <!-- Modal Title -->
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">
+                        Konfirmasi Hapus Tugas
+                    </h3>
+
+                    <!-- Modal Content -->
+                    <div class="mt-2 px-7 py-3">
+                        <p class="text-sm text-gray-500 mb-4">
+                            Apakah Anda yakin ingin menghapus tugas
+                            <span
+                                id="taskTitle"
+                                class="font-semibold text-gray-900"
+                            ></span
+                            >?
+                        </p>
+                        <p class="text-xs text-red-600 mb-4">
+                            ⚠️ Tindakan ini tidak dapat dibatalkan dan akan
+                            menghapus semua data terkait tugas ini.
+                        </p>
+                    </div>
+
+                    <!-- Modal Actions -->
+                    <div class="items-center px-4 py-3">
+                        <div class="flex space-x-3">
+                            <button
+                                id="cancelDelete"
+                                class="px-4 py-2 bg-gray-500 text-white text-base font-medium rounded-md shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300 transition-colors duration-200"
+                            >
+                                Batal
+                            </button>
+                            <form id="deleteForm" method="POST" class="inline">
+                                <button
+                                    type="submit"
+                                    class="px-4 py-2 bg-red-600 text-white text-base font-medium rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors duration-200"
+                                >
+                                    Ya, Hapus
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function openDeleteModal(url, title) {
+                console.log("Opening modal for:", title, url);
+
+                // Set the task title
+                document.getElementById("taskTitle").textContent = title;
+
+                // Set the form action
+                document.getElementById("deleteForm").action = url;
+
+                // Show the modal
+                document
+                    .getElementById("deleteModal")
+                    .classList.remove("hidden");
+
+                console.log("Modal should be visible now");
+            }
+
+            function closeDeleteModal() {
+                document.getElementById("deleteModal").classList.add("hidden");
+            }
+
+            // Event listeners
+            document.addEventListener("DOMContentLoaded", function () {
+                // Cancel button
+                document
+                    .getElementById("cancelDelete")
+                    .addEventListener("click", closeDeleteModal);
+
+                // Click outside modal to close
+                document
+                    .getElementById("deleteModal")
+                    .addEventListener("click", function (e) {
+                        if (e.target === this) {
+                            closeDeleteModal();
+                        }
+                    });
+
+                // Escape key to close
+                document.addEventListener("keydown", function (e) {
+                    if (e.key === "Escape") {
+                        closeDeleteModal();
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
